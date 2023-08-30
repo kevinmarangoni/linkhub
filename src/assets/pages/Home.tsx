@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   async function handleGenerate(){
     const shortened = await API.createShortLink(encodeURI(inputs.long))
     if(shortened.ok){
-      setInputs({...inputs, generated: encodeURI(`${getCleanDomainFromOrigin(window.location.origin)}/srt/${shortened.data.short}`)})
+      setInputs({...inputs, generated: encodeURI(`${window.location.origin}/srt/${shortened.data.short}`)})
     }
   }
 
