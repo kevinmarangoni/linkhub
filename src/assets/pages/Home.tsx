@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import {isValidUrl, copyToClipboard} from "@utils/url/url";
+import {isValidUrl, copyToClipboard, getCleanDomainFromOrigin} from "@utils/url/url";
 import API from "@utils/api/api";
 
 const Home: React.FC = () => {
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   async function handleGenerate(){
     const shortened = await API.createShortLink(encodeURI(inputs.long))
     if(shortened.ok){
-      setInputs({...inputs, generated: encodeURI(`${window.location.origin}/srt/${shortened.data.short}`)})
+      setInputs({...inputs, generated: encodeURI(`${getCleanDomainFromOrigin(window.location.origin)}/srt/${shortened.data.short}`)})
     }
   }
 
