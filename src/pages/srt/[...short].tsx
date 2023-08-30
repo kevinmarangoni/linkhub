@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 import ApiMethods from "@utils/api/api"
 import { useRouter } from "next/router"
 
-const RedirectPage: React.FC<any> = ({ res }) => {
+const RedirectPage: React.FC<any> = ({ link }) => {
     const router = useRouter()
     useEffect(()=>{
-        if(res){
-            router.push(res.data.link)
+        if(link.length > 0){
+            router.push(link)
         }
-    },[res])
+    },[link])
     return (
         
         <div>RedirectPage</div>
@@ -16,16 +16,17 @@ const RedirectPage: React.FC<any> = ({ res }) => {
 }
 
 export async function getServerSideProps(ctx:any) {
-    const { short } = ctx.query;
-    const res = await ApiMethods.getLinkByShort(short[0]);
+    const { short } = ctx.params;
+    const data = short[0]
+    const res = await ApiMethods.getLinkByShort(data);
     if (res.ok){
+        const link = encodeURI(res.data.link)
         return {
             props: {
-                res,
+                link,
             },
         };
     }
-
 }
 
 export default RedirectPage
