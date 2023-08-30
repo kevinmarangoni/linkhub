@@ -16,7 +16,7 @@ export interface IDataRequest {
 }
 
 class ApiMethods {
-    apiURL: string = process.env.API_URL || "http://localhost:3001/api/v1"
+    apiURL: string = process.env.API_URL || `http://localhost:5757/api/v1`
     maxRetries: number = 5;
     retryDelay: number = 1000; // Em milissegundos
 
