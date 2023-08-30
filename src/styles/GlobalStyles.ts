@@ -3,20 +3,6 @@ import { IGlobalStyleProps } from "@/types/theme";
 
 const GlobalStyle = createGlobalStyle<IGlobalStyleProps>`
 
-    *{
-        padding: 0;
-        margin: 0;
-        font-family: 'Doboto', sans-serif;
-        color: ${(props) => props.theme.font}
-    }
-
-    html{
-        background-color: ${(props) => props.theme.background.primary};
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-        -webkit-text-size-adjust: 100%;
-    }
-
     *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
     all: unset;
     display: revert;
@@ -120,6 +106,23 @@ img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
+
+
+*{
+        padding: 0;
+        margin: 0;
+        font-family: 'Doboto', sans-serif;
+        font-size: 22px;
+        color: ${(props) => props.theme.font};
+        border: 1px dashed red;
+    }
+
+    html{
+        background-color: ${(props) => props.theme.background.primary};
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: 100%;
+    }
 
 `;
 

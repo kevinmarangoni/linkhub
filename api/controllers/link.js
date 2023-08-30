@@ -15,7 +15,7 @@ class LinkController {
             res.status(httpStatus.BAD_REQUEST).json({error: "missing cannot be null"});
             return
         }
-        if (link != "string"){
+        if (typeof link != "string"){
             res.status(httpStatus.BAD_REQUEST).json({error: "link must be a string"});
             return
         }
@@ -25,7 +25,7 @@ class LinkController {
     }
 
     async getShortByLink(req, res){
-        let link = req.body.link
+        let link = req.params.link
 
         if (link == undefined){
             res.status(httpStatus.BAD_REQUEST).json({error: "missing link"});
@@ -45,7 +45,7 @@ class LinkController {
     }
 
     async getLinkByShort(req, res){
-        let short = req.body.short
+        let short = req.params.short
         if (short == undefined){
             res.status(httpStatus.BAD_REQUEST).json({error: "missing short"});
             return

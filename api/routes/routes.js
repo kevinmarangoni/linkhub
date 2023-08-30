@@ -9,8 +9,8 @@ router.get('/ping', pingController.respondPing)
 
 //links
 router.post('/link', LinkController.createLink)
-router.get('/linkByShort', LinkController.getLinkByShort)
-router.get('/shortByLink', LinkController.getShortByLink)
+router.get('/link/short/:short', LinkController.getLinkByShort)
+router.get('/link/link/:link', LinkController.getShortByLink)
 
 
 module.exports = router
