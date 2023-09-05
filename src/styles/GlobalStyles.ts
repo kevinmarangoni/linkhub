@@ -114,7 +114,7 @@ img, picture, video, canvas, svg {
         font-family: 'Doboto', sans-serif;
         font-size: 22px;
         color: ${(props) => props.theme.font};
-        //border: 1px dashed red;
+        border: 1px dashed red;
     }
 
     html{

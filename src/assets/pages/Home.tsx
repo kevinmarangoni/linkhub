@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import {isValidUrl, copyToClipboard, getCleanDomainFromOrigin} from "@utils/url/url";
+import {isValidUrl, copyToClipboard} from "@utils/url/url";
 import API from "@utils/api/api";
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 const Home: React.FC = () => {
-
+  const session = useSession();
   const [inputs, setInputs] = useState({
     long: "",
     validURL: false,
     generated: "",
     clipboarded: false
   });
+
+  useEffect(() => {
+    console.log(session)
+  }, [session])
+  
 
   useEffect(()=>{
     let isValid = isValidUrl(inputs.long)
@@ -61,6 +67,19 @@ const Home: React.FC = () => {
             <button type="button" disabled={inputs.generated.length == 0} onClick={handleClipboard}>{inputs.clipboarded ? "Copiado!":"Copiar"}</button>
           </div>
         </Form>
+        <div>
+              <button onClick={()=>{
+                signIn('google')
+              }}> google</button>
+
+              <button onClick={()=>{
+                signIn('discord')
+              }}> discord</button>
+
+              <button onClick={()=>{
+                signIn('github')
+              }}> github</button>
+        </div>
       </Content>
     </Container>
   );

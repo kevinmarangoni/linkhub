@@ -16,7 +16,7 @@ export interface IDataRequest {
 }
 
 class ApiMethods {
-    apiURL = `https://linkhub-api.onrender.com/api/v1` //${process.env.API_URL}
+    apiURL = `${process.env.API_URL}/api/v1` //`https://linkhub-api.onrender.com`
     maxRetries: number = 5;
     retryDelay: number = 1000; // Em milissegundos
 
